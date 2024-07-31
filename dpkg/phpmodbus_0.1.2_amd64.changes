@@ -1,0 +1,26 @@
+Format: 1.8
+Date: Sun, 21 Jul 2024 15:47:35 +0200
+Source: phpmodbus
+Binary: phpmodbus
+Built-For-Profiles: noudeb
+Architecture: all
+Version: 0.1.2
+Distribution: unstable
+Urgency: low
+Maintainer: Stefan Holzheu <stefan.holzheu@uni-bayreuth.de>
+Changed-By: Stefan Holzheu <stefan.holzheu@uni-bayreuth.de>
+Description:
+ phpmodbus  - phpmodbus from https://github.com/krakorj/phpmodbus
+Changes:
+ phpmodbus (0.1.2) unstable; urgency=low
+ .
+   * First version
+Checksums-Sha1:
+ df9b5ca784e8f983a45c24302f54544396d2a48b 8716 phpmodbus_0.1.2_all.deb
+ d800083510e06aa9f393f0c3b36e86999067bd66 6003 phpmodbus_0.1.2_amd64.buildinfo
+Checksums-Sha256:
+ 4f19f1ddf0ff698bec8d62c90865038bee58b7a805bcc420c42aa4f3d677b931 8716 phpmodbus_0.1.2_all.deb
+ 07ed0c06b26319e161b507ad1a02b4575184d4c6fde1a15bb5385c8f66b51a8f 6003 phpmodbus_0.1.2_amd64.buildinfo
+Files:
+ cbbf707820dfd68a4002fbd415a020da 8716 misc optional phpmodbus_0.1.2_all.deb
+ 11e300a8af2d739e03928c8e52732cc7 6003 misc optional phpmodbus_0.1.2_amd64.buildinfo
