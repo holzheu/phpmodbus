@@ -93,7 +93,7 @@ class ModbusMaster {
             throw new Exception("socket_bind() failed.</br>Reason: ($result)".
                 socket_strerror(socket_last_error($this->sock)));
         } else {
-            $this->status .= "Bound\n";
+            $this->status = "Bound\n";
         }
     }
     // Connect the socket
@@ -102,7 +102,7 @@ class ModbusMaster {
         throw new Exception("socket_connect() failed.</br>Reason: ($result)".
             socket_strerror(socket_last_error($this->sock)));
     } else {
-        $this->status .= "Connected\n";
+        $this->status = "Connected\n";
         return true;        
     }    
   }
@@ -701,7 +701,7 @@ class ModbusMaster {
         $buffer1 .= iecType::iecDINT($dataitem, $this->endianness);   // register values x
         $dataLen += 4;
       }
-      elseif($dataTypes[$key]=="REAL") {
+      elseif($dataTypes[$key]=="FLOAT") {
         $buffer1 .= iecType::iecREAL($dataitem, $this->endianness);   // register values x
         $dataLen += 4;
       }       
