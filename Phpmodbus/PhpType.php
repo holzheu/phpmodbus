@@ -144,7 +144,7 @@ class PhpType {
      * [{@link http://de.php.net/manual/en/function.base-convert.php PHP base_convert function commentary}, Todd Stokes @ Georgia Tech 21-Nov-2007] or
      * [{@link http://www.php.net/manual/en/function.pack.php PHP pack/unpack functionality}]
      *
-     * @param value value in IEC REAL data type to be converted
+     * @param float value in IEC REAL data type to be converted
      * @return float float value
      */
     private static function real2float($value) {
@@ -193,8 +193,8 @@ class PhpType {
      *
      * Check if the data variable is array, and check if the values are numeric
      *
-     * @param int $data
-     * @return int
+     * @param array $data
+     * @return array
      */
     private static function checkData($data) {
         // Check the data
@@ -225,7 +225,7 @@ class PhpType {
      *
      * Combine bytes together
      *
-     * @param int $data
+     * @param array $data
      * @param bool $endianness
      * @return int
      */
@@ -246,4 +246,3 @@ class PhpType {
         return $value;
     }
 }
-?>

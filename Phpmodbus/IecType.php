@@ -30,8 +30,8 @@ class IecType {
      *
      * Converts a value to IEC-1131 BYTE data type
      *
-     * @param value value from 0 to 255
-     * @return value IEC BYTE data type
+     * @param int value from 0 to 255
+     * @return string IEC BYTE data type
      *
      */
     public static function iecBYTE($value) {
@@ -43,8 +43,8 @@ class IecType {
      *
      * Converts a value to IEC-1131 INT data type
      *
-     * @param value value to be converted
-     * @return value IEC-1131 INT data type
+     * @param int value to be converted
+     * @return string IEC-1131 INT data type
      *
      */
     public static function iecINT($value) {
@@ -57,9 +57,9 @@ class IecType {
      *
      * Converts a value to IEC-1131 DINT data type
      *
-     * @param value value to be converted
-     * @param value endianness defines endian codding (little endian == 0, big endian == 1)
-     * @return value IEC-1131 INT data type
+     * @param int value to be converted
+     * @param bool endianness defines endian codding (little endian == 0, big endian == 1)
+     * @return string IEC-1131 INT data type
      *
      */
     public static function iecDINT($value, $endianness = 0) {
@@ -72,9 +72,9 @@ class IecType {
      *
      * Converts a value to IEC-1131 REAL data type. The function uses function  @use float2iecReal.
      *
-     * @param value value to be converted
-     * @param value endianness defines endian codding (little endian == 0, big endian == 1)
-     * @return value IEC-1131 REAL data type
+     * @param int value to be converted
+     * @param bool endianness defines endian codding (little endian == 0, big endian == 1)
+     * @return string IEC-1131 REAL data type
      */
     public static function iecREAL($value, $endianness = 0) {
         // iecREAL representation
@@ -93,7 +93,7 @@ class IecType {
      * [{@link http://www.php.net/manual/en/function.pack.php PHP pack/unpack functionality}]
      *
      * @param float value to be converted
-     * @return value IEC REAL data type
+     * @return float IEC REAL data type
      */
     private static function float2iecReal($value) {
         // get float binary string
@@ -111,7 +111,7 @@ class IecType {
      *
      * @param int $value
      * @param bool $endianness
-     * @return int
+     * @return string
      */
     private static function endianness($value, $endianness = 0) {
         if ($endianness == 0)
@@ -130,4 +130,4 @@ class IecType {
 
 }
 
-?>
+

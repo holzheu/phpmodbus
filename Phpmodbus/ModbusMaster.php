@@ -51,8 +51,8 @@ class ModbusMaster {
    *
    * This is the constructor that defines {@link $host} IP address of the object. 
    *     
-   * @param String $host An IP address of a Modbus TCP device. E.g. "192.168.1.1"
-   * @param String $protocol Socket protocol (TCP, UDP)   
+   * @param string $host An IP address of a Modbus TCP device. E.g. "192.168.1.1"
+   * @param string $protocol Socket protocol (TCP, UDP)   
    */         
   function __construct($host, $protocol){
     $this->socket_protocol = $protocol;
@@ -134,7 +134,7 @@ class ModbusMaster {
    *
    * Receive data from the socket
    *
-   * @return bool
+   * @return string|void
    */
   private function rec(){
     socket_set_nonblock($this->sock);
@@ -212,9 +212,9 @@ class ModbusMaster {
    * {@link $reference} of a memory of a Modbus device given by 
    * {@link $unitId}.
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity 
    */
   function readCoils($unitId, $reference, $quantity){
     $this->status .= "readCoils: START\n";
@@ -241,10 +241,10 @@ class ModbusMaster {
    * 
    * Alias to {@link readCoils} method
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity
-   * @return type 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity
+   * @return string 
    */
   function fc1($unitId, $reference, $quantity){
     return $this->readCoils($unitId, $reference, $quantity);
@@ -255,10 +255,10 @@ class ModbusMaster {
    * 
    * FC1 packet builder - read coils
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity
-   * @return type 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity
+   * @return string 
    */
   private function readCoilsPacketBuilder($unitId, $reference, $quantity){
     $dataLen = 0;
@@ -286,9 +286,9 @@ class ModbusMaster {
    * 
    * FC 1 response parser
    * 
-   * @param type $packet
-   * @param type $quantity
-   * @return type 
+   * @param string $packet
+   * @param string $quantity
+   * @return array 
    */
   private function readCoilsParser($packet, $quantity){    
     $data = array();
@@ -327,9 +327,9 @@ class ModbusMaster {
    * {@link $reference} of a memory of a Modbus device given by 
    * {@link $unitId}.
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity 
    */
   function readInputDiscretes($unitId, $reference, $quantity){
     $this->status .= "readInputDiscretes: START\n";
@@ -356,10 +356,10 @@ class ModbusMaster {
    * 
    * Alias to {@link readInputDiscretes} method
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity
-   * @return type 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity
+   * @return string 
    */
   function fc2($unitId, $reference, $quantity){
     return $this->readInputDiscretes($unitId, $reference, $quantity);
@@ -370,10 +370,10 @@ class ModbusMaster {
    * 
    * FC2 packet builder - read coils
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $quantity
-   * @return type 
+   * @param string $unitId
+   * @param string $reference
+   * @param string $quantity
+   * @return string 
    */
   private function readInputDiscretesPacketBuilder($unitId, $reference, $quantity){
     $dataLen = 0;
@@ -401,9 +401,9 @@ class ModbusMaster {
    * 
    * FC 2 response parser, alias to FC 1 parser i.e. readCoilsParser.
    * 
-   * @param type $packet
-   * @param type $quantity
-   * @return type 
+   * @param string $packet
+   * @param string $quantity
+   * @return string 
    */
   private function readInputDiscretesParser($packet, $quantity){
     return $this->readCoilsParser($packet, $quantity);
@@ -422,7 +422,7 @@ class ModbusMaster {
    * @param int $unitId usually ID of Modbus device 
    * @param int $reference Reference in the device memory to read data (e.g. in device WAGO 750-841, memory MW0 starts at address 12288).
    * @param int $quantity Amounth of the data to be read from device.
-   * @return false|Array Success flag or array of received data.
+   * @return false|array Success flag or array of received data.
    */
   function readMultipleRegisters($unitId, $reference, $quantity){
     $this->status .= "readMultipleRegisters: START\n";
@@ -452,7 +452,7 @@ class ModbusMaster {
    * @param int $unitId
    * @param int $reference
    * @param int $quantity
-   * @return false|Array
+   * @return false|array
    */
   function fc3($unitId, $reference, $quantity){
     return $this->readMultipleRegisters($unitId, $reference, $quantity);
@@ -516,10 +516,10 @@ class ModbusMaster {
    * This function writes {@link $data} array at {@link $reference} position of 
    * memory of a Modbus device given by {@link $unitId}. 
    * 
-   * @param type $unitId
-   * @param type $reference
-   * @param type $data
-   * @return type 
+   * @param string $unitId
+   * @param string $reference
+   * @param array $data
+   * @return string 
    */
   function writeMultipleCoils($unitId, $reference, $data){
     $this->status .= "writeMultipleCoils: START\n";
@@ -548,7 +548,7 @@ class ModbusMaster {
    * @param int $unitId
    * @param int $reference
    * @param array $data
-   * @return bool
+   * @return string
    */
   function fc15($unitId, $reference, $data){    
     return $this->writeMultipleCoils($unitId, $reference, $data);
@@ -757,7 +757,7 @@ class ModbusMaster {
    * @param int $referenceWrite Reference in the device memory to write data.
    * @param array $data Array of values to be written.
    * @param array $dataTypes Array of types of values to be written. The array should consists of string "INT", "DINT" and "REAL".   
-   * @return false|Array Success flag or array of data.
+   * @return false|array Success flag or array of data.
    */
   function readWriteRegisters($unitId, $referenceRead, $quantity, $referenceWrite, $data, $dataTypes){
     $this->status .= "readWriteRegisters: START\n";
@@ -790,7 +790,7 @@ class ModbusMaster {
    * @param int $referenceWrite
    * @param array $data
    * @param array $dataTypes
-   * @return false|Array
+   * @return false|array
    */
   function fc23($unitId, $referenceRead, $quantity, $referenceWrite, $data, $dataTypes){
     return $this->readWriteRegisters($unitId, $referenceRead, $quantity, $referenceWrite, $data, $dataTypes);
@@ -861,7 +861,7 @@ class ModbusMaster {
    * FC23 response parser
    *
    * @param string $packet
-   * @return array
+   * @return array|bool
    */
   private function readWriteRegistersParser($packet){
     $data = array();
@@ -880,7 +880,7 @@ class ModbusMaster {
    *
    * Parse data and get it to the Hex form
    *
-   * @param char $value
+   * @param string $value
    * @return string
    */
   private function byte2hex($value){

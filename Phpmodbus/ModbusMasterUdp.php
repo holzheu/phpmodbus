@@ -41,7 +41,7 @@ class ModbusMasterUdp extends ModbusMaster {
    *
    * This is the constructor that defines {@link $host} IP address of the object. 
    *     
-   * @param String $host An IP address of a Modbus UDP device. E.g. "192.168.1.1".
+   * @param string $host An IP address of a Modbus UDP device. E.g. "192.168.1.1".
    */         
   function __construct($host){
     $this->host = $host;
